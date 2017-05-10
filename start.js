@@ -3,7 +3,12 @@ const mongoose = require('mongoose');
 // import environmental variables from our variables.env file
 require('dotenv').config({ path: 'variables.env' });
 
-const mongoDB = process.env.MONGODB_URI || 'mongodb://localhost/townie-dev'
+const mongoDB = 'mongodb://localhost/townie-dev'
+
+if (process.env.NODE_ENV === 'production') {
+  mongoDB = process.env.MONGODB_URI
+}
+
 // Connect to our Database and handle an bad connections
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises

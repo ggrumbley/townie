@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+const Schema = mongoose.Schema;
+
+mongoose.Promise = global.Promise;  // Dep. Warning Workaround. Remove in Mongoose 5
 
 const slug = require('slugs');
 
-const storeSchema = new mongoose.Schema({
+const storeSchema = new Schema({
   name: {
     type: String,
     trim: true,

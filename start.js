@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // Connect to our Database and handle an bad connections
 mongoose.connect(mongoDB);
-mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
+mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises Dep. in M-5
 mongoose.connection.on('error', (err) => {
   console.error(`🙅 🚫 🙅 🚫 🙅 🚫 🙅 🚫 → ${err.message}`);
 });

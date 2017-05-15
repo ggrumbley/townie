@@ -58,6 +58,7 @@ exports.getStores = async (req, res) => {
 };
 
 exports.editStore = async (req, res) => {
+  console.log("💩");
   const store = await Store.findOne({ _id: req.params.id });
   res.render('editStore', { title: `Edit ${store.name}`, store });
 };

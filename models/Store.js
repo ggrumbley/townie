@@ -41,7 +41,7 @@ const storeSchema = new Schema({
     ref: 'User',
     required: 'You must supply an author'
   }
-  
+
 });
 
 storeSchema.pre('save', async function (next) {
@@ -59,6 +59,12 @@ storeSchema.pre('save', async function (next) {
   }
   next();
 })
+
+// INDEXES
+storeSchema.index({
+  name: 'text',
+  description: 'text'
+});
 
 storeSchema.statics.getTagsList = function () {
   return this.aggregate([

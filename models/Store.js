@@ -44,6 +44,14 @@ const storeSchema = new Schema({
 
 });
 
+// INDEXES
+storeSchema.index({
+  name: 'text',
+  description: 'text'
+});
+
+storeSchema.index({ location: '2dsphere' });
+
 storeSchema.pre('save', async function (next) {
   if (!this.isModified('name')) {
     next();
@@ -59,12 +67,6 @@ storeSchema.pre('save', async function (next) {
   }
   next();
 })
-
-// INDEXES
-storeSchema.index({
-  name: 'text',
-  description: 'text'
-});
 
 storeSchema.statics.getTagsList = function () {
   return this.aggregate([

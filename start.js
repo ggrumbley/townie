@@ -3,10 +3,12 @@ const mongoose = require('mongoose');
 // import environmental variables from our variables.env file
 require('dotenv').config({ path: 'variables.env' });
 
-const mongoDB = 'mongodb://localhost/townie-dev'
+const mongoDB;
 
 if (process.env.NODE_ENV === 'production') {
-  mongoDB = process.env.MONGODB_URI
+  mongoDB = process.env.MONGODB_URI;
+} else {
+  mongoDB = 'mongodb://localhost/townie-dev';
 }
 
 // Connect to our Database and handle an bad connections
